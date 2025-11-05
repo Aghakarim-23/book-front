@@ -23,7 +23,7 @@ const CreateBook = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const res = await axios.post("http://localhost:8001/createBook", formData);
+        const res = await axios.post("https://aghakarim-book-app.netlify.app/createBook", formData);
         setLoading(true)
       toast.success(res.data.message)
       
