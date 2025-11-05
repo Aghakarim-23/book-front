@@ -97,7 +97,7 @@ const [loading, setLoading] = useState(false)
         <button
           disabled={loading}
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:cursor-not-allowed"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
         >
           Update Book
         </button>
