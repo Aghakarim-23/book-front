@@ -23,7 +23,7 @@ const CreateBook = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const res = await axios.post("https://aghakarim-book-app.netlify.app/createBook", formData);
+        const res = await axios.post("https://book-app-h8qk.onrender.com/createBook", formData);
         setLoading(true)
       toast.success(res.data.message)
       
@@ -34,7 +34,6 @@ const CreateBook = () => {
       setFormData({ title: "", author: "", publishYear: "" });
     } catch (error) {
       console.error("Error creating book:", error);
-      toast.error(res.data.message)
     } finally{
         setLoading(false)
     }
