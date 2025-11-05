@@ -24,7 +24,7 @@ const { id } = useParams()
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(`http://localhost:8001/${id}`, formData);
+      const res = await axios.put(`https://book-app-h8qk.onrender.com/${id}`, formData);
       toast.success(res?.data?.message)
       
       navigate("/")
@@ -41,7 +41,7 @@ const { id } = useParams()
   useEffect(() => {
     const getBook = async () => {
         try {
-            const res = await axios.get(`http://localhost:8001/${id}`)
+            const res = await axios.get(`https://book-app-h8qk.onrender.com/${id}`)
             setFormData({
                 title: res.data.title,
                 author: res.data.author,

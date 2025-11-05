@@ -14,7 +14,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:8001");
+        const res = await axios.get("https://book-app-h8qk.onrender.com");
         setBooks(res.data.books);
         console.log(res.data.books);
       } catch (error) {
@@ -32,7 +32,7 @@ const Home = () => {
 const handleDeleteBook = async (id) => {
 
     try {
-        const res = await axios.delete(`http://localhost:8001/${id}`)
+        const res = await axios.delete(`https://book-app-h8qk.onrender.com/${id}`)
         console.log(res)
         toast.success(res.data.message)
     } catch (error) {

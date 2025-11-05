@@ -10,7 +10,7 @@ const BookDetail = () => {
  useEffect(() => {
        const getBook = async () => {
          try {
-            const res = await axios.get(`http://localhost:8001/${id}`)
+            const res = await axios.get(`https://book-app-h8qk.onrender.com/${id}`)
             setBook(res.data)
          } catch (error) {
             console.error(error)
