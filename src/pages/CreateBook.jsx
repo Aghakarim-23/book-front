@@ -10,6 +10,8 @@ const CreateBook = () => {
     author: "",
     publishYear: "",
   });
+  
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -21,7 +23,8 @@ const CreateBook = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8001/createBook", formData);
+        const res = await axios.post("http://localhost:8001/createBook", formData);
+        setLoading(true)
       toast.success(res.data.message)
       
       navigate("/")
@@ -32,6 +35,8 @@ const CreateBook = () => {
     } catch (error) {
       console.error("Error creating book:", error);
       toast.error(res.data.message)
+    } finally{
+        setLoading(false)
     }
   };
 
@@ -67,8 +72,10 @@ const CreateBook = () => {
           required
         />
         <button
+          disabled={loading}
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className={`bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:cursor-not-allowed
+            `}
         >
           Create Book
         </button>

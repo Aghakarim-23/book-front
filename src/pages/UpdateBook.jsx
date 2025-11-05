@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 const UpdateBook = () => {
 const { id } = useParams()
 
+const [loading, setLoading] = useState(false)
+
   const [formData, setFormData] = useState({
     title: "",
     author: "",
@@ -24,6 +26,7 @@ const { id } = useParams()
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true)
       const res = await axios.put(`https://book-app-h8qk.onrender.com/${id}`, formData);
       toast.success(res?.data?.message)
       
@@ -34,6 +37,8 @@ const { id } = useParams()
     } catch (error) {
       console.error("Error creating book:", error);
       toast.error(res?.data?.message)
+    } finally{
+        setLoading(false)
     }
   };
 
@@ -90,8 +95,9 @@ const { id } = useParams()
           required
         />
         <button
+          disabled={loading}
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:cursor-not-allowed"
         >
           Update Book
         </button>
